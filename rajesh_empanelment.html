@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rajesh Yadav — TPA & Insurance Empanelment Services</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy:    #1B3A5C;
+    --teal:    #2A7F7F;
+    --teal-lt: #3DA0A0;
+    --cream:   #F7F4EF;
+    --white:   #FFFFFF;
+    --mid:     #6B8CAE;
+    --text:    #2D3748;
+    --muted:   #718096;
+    --border:  #D9E4EE;
+    --accent:  #E8F4F4;
+    --gold:    #C9943A;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: var(--navy);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2.5rem; height: 64px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+  }
+  .nav-brand {
+    font-family: 'Playfair Display', serif;
+    color: var(--white); font-size: 1.15rem; font-weight: 600;
+    letter-spacing: 0.01em;
+  }
+  .nav-brand span { color: var(--teal-lt); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: #A9C4D9; text-decoration: none;
+    font-size: 0.85rem; font-weight: 500; letter-spacing: 0.04em;
+    text-transform: uppercase; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--white); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--navy) 0%, #1a4a6e 55%, #1d5f72 100%);
+    display: flex; align-items: center;
+    padding: 100px 2.5rem 4rem;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: -80px; right: -80px;
+    width: 500px; height: 500px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(42,127,127,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute; bottom: -100px; left: 30%;
+    width: 340px; height: 340px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(42,127,127,0.10) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-inner {
+    max-width: 1100px; margin: 0 auto; width: 100%;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+  }
+  .hero-tag {
+    display: inline-block;
+    background: rgba(42,127,127,0.25); border: 1px solid var(--teal-lt);
+    color: var(--teal-lt); font-size: 0.75rem; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 0.35rem 0.9rem; border-radius: 2px; margin-bottom: 1.4rem;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem; font-weight: 700; line-height: 1.2;
+    color: var(--white); margin-bottom: 1.4rem;
+  }
+  .hero h1 em { color: var(--teal-lt); font-style: normal; }
+  .hero-sub {
+    color: #A9C4D9; font-size: 1rem; line-height: 1.75;
+    margin-bottom: 2rem; max-width: 460px;
+  }
+  .hero-cta {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    background: var(--teal); color: var(--white);
+    padding: 0.85rem 2rem; border-radius: 3px;
+    font-weight: 600; font-size: 0.9rem; text-decoration: none;
+    letter-spacing: 0.03em; transition: background 0.2s, transform 0.15s;
+  }
+  .hero-cta:hover { background: var(--teal-lt); transform: translateY(-1px); }
+
+  /* card on the right */
+  .hero-card {
+    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 8px; padding: 2rem;
+    backdrop-filter: blur(6px);
+  }
+  .hero-card-title {
+    font-family: 'Playfair Display', serif;
+    color: var(--white); font-size: 1.1rem; margin-bottom: 1.2rem;
+    padding-bottom: 0.75rem; border-bottom: 1px solid rgba(255,255,255,0.12);
+  }
+  .stat-row { display: flex; gap: 1.5rem; margin-bottom: 1.4rem; }
+  .stat { flex: 1; }
+  .stat-num {
+    font-size: 2rem; font-weight: 700; color: var(--teal-lt);
+    font-family: 'Playfair Display', serif; line-height: 1;
+  }
+  .stat-label { font-size: 0.78rem; color: #A9C4D9; margin-top: 0.3rem; }
+  .hero-doc-list { list-style: none; }
+  .hero-doc-list li {
+    display: flex; align-items: center; gap: 0.6rem;
+    color: #C9DDE8; font-size: 0.82rem; padding: 0.3rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .hero-doc-list li::before {
+    content: '✓'; color: var(--teal-lt); font-weight: 700; flex-shrink: 0;
+  }
+
+  /* ── SECTION COMMONS ── */
+  section { padding: 5rem 2.5rem; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  .section-tag {
+    display: inline-block;
+    font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--teal);
+    margin-bottom: 0.6rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; color: var(--navy); margin-bottom: 0.6rem;
+  }
+  .section-desc { color: var(--muted); max-width: 520px; font-size: 0.95rem; line-height: 1.75; }
+  .divider { width: 48px; height: 3px; background: var(--teal); margin: 1.2rem 0 2.5rem; border-radius: 2px; }
+
+  /* ── ABOUT / PROPOSAL ── */
+  #about { background: var(--white); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  .proposal-box {
+    background: var(--accent); border-left: 4px solid var(--teal);
+    padding: 2rem 2rem 2rem 1.8rem; border-radius: 0 6px 6px 0;
+  }
+  .proposal-box p {
+    color: var(--text); font-size: 0.93rem; line-height: 1.85;
+    margin-bottom: 1rem;
+  }
+  .proposal-box p:last-child { margin-bottom: 0; }
+  .contact-block {
+    background: var(--navy); border-radius: 8px; padding: 2rem;
+    color: var(--white);
+  }
+  .contact-block h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem; margin-bottom: 1.2rem;
+    color: var(--teal-lt);
+  }
+  .contact-item { display: flex; gap: 0.8rem; align-items: flex-start; margin-bottom: 1rem; }
+  .contact-icon {
+    width: 36px; height: 36px; background: rgba(42,127,127,0.2);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; flex-shrink: 0;
+  }
+  .contact-label { font-size: 0.72rem; color: var(--mid); text-transform: uppercase; letter-spacing: 0.05em; }
+  .contact-val { color: var(--white); font-weight: 500; font-size: 0.95rem; margin-top: 0.1rem; }
+
+  /* services */
+  #services { background: var(--cream); }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .service-card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 8px; padding: 1.8rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .service-card:hover {
+    border-color: var(--teal);
+    box-shadow: 0 4px 18px rgba(42,127,127,0.12);
+  }
+  .service-icon {
+    width: 48px; height: 48px; background: var(--accent);
+    border-radius: 8px; display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem; margin-bottom: 1rem;
+  }
+  .service-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem; color: var(--navy); margin-bottom: 0.5rem;
+  }
+  .service-card p { color: var(--muted); font-size: 0.87rem; line-height: 1.7; }
+
+  /* ── TPA LIST ── */
+  #tpa { background: var(--white); }
+  .tpa-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.75rem; }
+  .tpa-pill {
+    background: var(--cream); border: 1px solid var(--border);
+    border-radius: 6px; padding: 0.7rem 1rem;
+    font-size: 0.85rem; color: var(--navy); font-weight: 500;
+    display: flex; align-items: center; gap: 0.5rem;
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .tpa-pill:hover { background: var(--accent); border-color: var(--teal); }
+  .tpa-pill::before {
+    content: ''; width: 6px; height: 6px; background: var(--teal);
+    border-radius: 50%; flex-shrink: 0;
+  }
+
+  /* ── GIC RATES ── */
+  #gic { background: var(--cream); }
+  .rates-table-wrap { overflow-x: auto; border-radius: 8px; border: 1px solid var(--border); }
+  table {
+    width: 100%; border-collapse: collapse; font-size: 0.88rem;
+  }
+  thead { background: var(--navy); }
+  thead th {
+    color: var(--white); padding: 0.9rem 1.1rem;
+    text-align: left; font-weight: 600; letter-spacing: 0.04em;
+    font-size: 0.8rem; text-transform: uppercase;
+  }
+  tbody tr { background: var(--white); border-bottom: 1px solid var(--border); }
+  tbody tr:nth-child(even) { background: #F0F6F6; }
+  tbody tr:hover { background: var(--accent); }
+  tbody td { padding: 0.75rem 1.1rem; color: var(--text); }
+  .rate-badge {
+    display: inline-block;
+    background: var(--teal); color: var(--white);
+    padding: 0.15rem 0.6rem; border-radius: 20px;
+    font-size: 0.8rem; font-weight: 600;
+  }
+  .rate-high { background: var(--gold); }
+
+  /* ── DOCUMENTS ── */
+  #documents { background: var(--white); }
+  .docs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
+  .doc-item {
+    display: flex; align-items: flex-start; gap: 0.9rem;
+    background: var(--cream); border: 1px solid var(--border);
+    border-radius: 6px; padding: 1rem;
+  }
+  .doc-num {
+    width: 28px; height: 28px; background: var(--navy); color: var(--white);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 0.72rem; font-weight: 700; flex-shrink: 0;
+  }
+  .doc-text { font-size: 0.87rem; color: var(--text); line-height: 1.5; padding-top: 0.15rem; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy); color: #A9C4D9;
+    padding: 2.5rem; text-align: center; font-size: 0.85rem;
+  }
+  footer strong { color: var(--white); }
+  footer a { color: var(--teal-lt); text-decoration: none; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 800px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-card { display: none; }
+    .hero h1 { font-size: 2.2rem; }
+    .about-grid { grid-template-columns: 1fr; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    nav { padding: 0 1.2rem; }
+    .nav-links { gap: 1.2rem; }
+  }
+  @media (max-width: 560px) {
+    .services-grid { grid-template-columns: 1fr; }
+    section { padding: 3.5rem 1.2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">Rajesh <span>Yadav</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#tpa">TPA List</a></li>
+    <li><a href="#gic">GIC Rates</a></li>
+    <li><a href="#documents">Documents</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">Hospital Empanelment Specialist</div>
+      <h1>End-to-End <em>TPA & Insurance</em> Empanelment Support</h1>
+      <p class="hero-sub">
+        Facilitating smooth coordination between hospitals and Insurance/TPA organisations — ensuring timely, compliant, and effective empanelment across all major insurers.
+      </p>
+      <a href="#about" class="hero-cta">View Proposal ↓</a>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-title">At a Glance</div>
+      <div class="stat-row">
+        <div class="stat">
+          <div class="stat-num">36+</div>
+          <div class="stat-label">TPA & Insurer Partners</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">32</div>
+          <div class="stat-label">GIC Companies Covered</div>
+        </div>
+      </div>
+      <ul class="hero-doc-list">
+        <li>Hospital registration & documentation</li>
+        <li>Full coordination with TPA offices</li>
+        <li>Compliance & NABH/ISO support</li>
+        <li>On-site visit consultancy</li>
+        <li>Rohini registration assistance</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT / PROPOSAL -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div>
+        <div class="section-tag">Our Proposal</div>
+        <h2 class="section-title">Greetings from Rajesh Yadav</h2>
+        <div class="divider"></div>
+        <div class="proposal-box">
+          <p>We take this opportunity to introduce ourselves as a service provider offering end-to-end support for hospital empanelment with TPAs and all major Insurance Companies.</p>
+          <p>We facilitate smooth coordination between hospitals and Insurance/TPA organisations to ensure timely and effective empanelment.</p>
+          <p>In addition to empanelment services, we also provide consultancy and operational support on a visit basis, as and when required, to assist hospitals in meeting compliance and documentation requirements.</p>
+          <p>Please find below the list of TPAs along with applicable documents for your kind reference. We would be pleased to discuss this proposal further and look forward to a mutually beneficial association.</p>
+          <p style="font-style:italic; color: var(--teal);">— Warm regards, Rajesh Yadav, Service Provider, Sector-15, Panchkula, Haryana</p>
+        </div>
+      </div>
+      <div id="contact">
+        <div class="contact-block">
+          <h3>Get in Touch</h3>
+          <div class="contact-item">
+            <div class="contact-icon">👤</div>
+            <div>
+              <div class="contact-label">Name</div>
+              <div class="contact-val">Rajesh Yadav</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div>
+              <div class="contact-label">Location</div>
+              <div class="contact-val">Sector-15, Panchkula, Haryana</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div>
+              <div class="contact-label">Mobile</div>
+              <div class="contact-val"><a href="tel:7814403910" style="color:var(--teal-lt);">7814403910</a></div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">✉️</div>
+            <div>
+              <div class="contact-label">Email</div>
+              <div class="contact-val"><a href="mailto:rajesh.serviceprovider@gmail.com" style="color:var(--teal-lt); font-size:0.85rem;">rajesh.serviceprovider@gmail.com</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="section-tag">What We Offer</div>
+    <h2 class="section-title">Our Services</h2>
+    <div class="divider"></div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🏥</div>
+        <h3>Hospital Empanelment</h3>
+        <p>Complete end-to-end support for getting hospitals empanelled with TPAs and all major insurance companies across India.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📄</div>
+        <h3>Documentation Support</h3>
+        <p>Assistance in preparing and verifying all required documents including registrations, NOCs, certificates, and tariff lists.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🤝</div>
+        <h3>TPA Coordination</h3>
+        <p>Smooth liaison between the hospital and TPA/insurance offices, reducing delays and communication gaps throughout the process.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔍</div>
+        <h3>Compliance Consultancy</h3>
+        <p>On-site visits as and when required to assist hospitals in meeting compliance, NABH/ISO standards, and renewal requirements.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📋</div>
+        <h3>Rohini Registration</h3>
+        <p>Guidance and support for Rohini registration, an essential requirement for empanelment with most major insurers.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">💊</div>
+        <h3>Pharmacy & Bio-Medical</h3>
+        <p>Support for pharmacy setup documentation (in-house or outsourcing) and bio-medical waste agreement compliance.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TPA LIST -->
+<section id="tpa">
+  <div class="container">
+    <div class="section-tag">Partner Network</div>
+    <h2 class="section-title">TPA & Insurance Companies</h2>
+    <p class="section-desc">We work with all major TPAs and insurance companies. Empanelment support is available for every organisation listed below.</p>
+    <div class="divider"></div>
+    <div class="tpa-grid">
+      <div class="tpa-pill">Aditya Birla Health Insurance</div>
+      <div class="tpa-pill">AKNA TPA</div>
+      <div class="tpa-pill">Bajaj Allianz</div>
+      <div class="tpa-pill">Care Health Insurance</div>
+      <div class="tpa-pill">Chola Mandalam</div>
+      <div class="tpa-pill">East West TPA / Volo Health</div>
+      <div class="tpa-pill">Ericson TPA</div>
+      <div class="tpa-pill">Family Health Plan TPA</div>
+      <div class="tpa-pill">Future Generali</div>
+      <div class="tpa-pill">Galaxy Health Insurance</div>
+      <div class="tpa-pill">Go Digit Health Insurance</div>
+      <div class="tpa-pill">Good Health TPA</div>
+      <div class="tpa-pill">HDFC ERGO</div>
+      <div class="tpa-pill">Health India TPA</div>
+      <div class="tpa-pill">Health Insurance TPA</div>
+      <div class="tpa-pill">Heritage Health TPA</div>
+      <div class="tpa-pill">ICICI Lombard</div>
+      <div class="tpa-pill">IFFCO Tokio GIC</div>
+      <div class="tpa-pill">Liberty General Insurance</div>
+      <div class="tpa-pill">Link TPA</div>
+      <div class="tpa-pill">Manipal Cigna</div>
+      <div class="tpa-pill">MD India</div>
+      <div class="tpa-pill">MediAssist India TPA</div>
+      <div class="tpa-pill">MedSave Health TPA</div>
+      <div class="tpa-pill">Navi General Insurance</div>
+      <div class="tpa-pill">Niva Bupa</div>
+      <div class="tpa-pill">Paramount TPA</div>
+      <div class="tpa-pill">Park Mediclaim TPA</div>
+      <div class="tpa-pill">Reliance Insurance</div>
+      <div class="tpa-pill">Safeway TPA Services</div>
+      <div class="tpa-pill">SBI General Insurance</div>
+      <div class="tpa-pill">Star Health</div>
+      <div class="tpa-pill">Tata AIG</div>
+      <div class="tpa-pill">Universal Sompo</div>
+      <div class="tpa-pill">Vidal Health TPA</div>
+    </div>
+  </div>
+</section>
+
+<!-- GIC RATES -->
+<section id="gic">
+  <div class="container">
+    <div class="section-tag">Rate Reference</div>
+    <h2 class="section-title">GIC Insurance Companies & Rates</h2>
+    <p class="section-desc">Applicable empanelment rates for General Insurance Companies under GIC. All rates are indicative and subject to change.</p>
+    <div class="divider"></div>
+    <div class="rates-table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Insurance Company</th>
+            <th>Rate (%)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>ACKO</td><td><span class="rate-badge">10%</span></td></tr>
+          <tr><td>2</td><td>Bajaj Allianz</td><td><span class="rate-badge rate-high">15%</span></td></tr>
+          <tr><td>3</td><td>Chola Mandalam</td><td><span class="rate-badge">10%</span></td></tr>
+          <tr><td>4</td><td>Future Generali</td><td><span class="rate-badge">10%</span></td></tr>
+          <tr><td>5</td><td>Go Digit</td><td><span class="rate-badge">5%</span></td></tr>
+          <tr><td>6</td><td>HDFC ERGO</td><td><span class="rate-badge rate-high">20%</span></td></tr>
+          <tr><td>7</td><td>ICICI Lombard</td><td><span class="rate-badge rate-high">20%</span></td></tr>
+          <tr><td>8</td><td>IFFCO Tokio</td><td><span class="rate-badge">10%</span></td></tr>
+          <tr><td>9</td><td>Kshema GIC</td><td><span class="rate-badge">5%</span></td></tr>
+          <tr><td>10</td><td>Liberty General</td><td><span class="rate-badge">5%</span></td></tr>
+          <tr><td>11</td><td>Magma</td><td><span class="rate-badge">5%</span></td></tr>
+          <tr><td>12</td><td>National</td><td><span class="rate-badge">5%</span></td></tr>
+          <tr><td>13</td><td>Navi</td><td><span class="rate-badge">5%</span></td></tr>
+          <tr><td>14</td><td>Raheja</td><td><span class="rate-badge">5%</span></td></tr>
+          <tr><td>15</td><td>Reliance</td><td><span class="rate-badge">10%</span></td></tr>
+          <tr><td>16</td><td>Royal</td><td><span class="rate-badge">5%</span></td></tr>
+          <tr><td>17</td><td>SBI General</td><td><span class="rate-badge rate-high">15%</span></td></tr>
+          <tr><td>18</td><td>Shree Ram</td><td><span class="rate-badge">5%</span></td></tr>
+          <tr><td>19</td><td>Tata AIG</td><td><span class="rate-badge rate-high">15%</span></td></tr>
+          <tr><td>20</td><td>New India</td><td><span class="rate-badge">5%</span></td></tr>
+          <tr><td>21</td><td>Oriental</td><td><span class="rate-badge">5%</span></td></tr>
+          <tr><td>22</td><td>United</td><td><span class="rate-badge">5%</span></td></tr>
+          <tr><td>23</td><td>Universal Sompo</td><td><span class="rate-badge">10%</span></td></tr>
+          <tr><td>24</td><td>Zuno</td><td><span class="rate-badge">5%</span></td></tr>
+          <tr><td>25</td><td>Zurich Kotak</td><td><span class="rate-badge">5%</span></td></tr>
+          <tr><td>26</td><td>Aditya Birla</td><td><span class="rate-badge rate-high">15%</span></td></tr>
+          <tr><td>27</td><td>Care Health</td><td><span class="rate-badge rate-high">20%</span></td></tr>
+          <tr><td>28</td><td>Manipal Cigna</td><td><span class="rate-badge rate-high">20%</span></td></tr>
+          <tr><td>29</td><td>Niva Bupa</td><td><span class="rate-badge rate-high">20%</span></td></tr>
+          <tr><td>30</td><td>Star Health</td><td><span class="rate-badge rate-high" style="background:#b5451b;">25%</span></td></tr>
+          <tr><td>31</td><td>Narayana</td><td><span class="rate-badge">10%</span></td></tr>
+          <tr><td>32</td><td>Galaxy Health</td><td><span class="rate-badge">10%</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- DOCUMENTS -->
+<section id="documents">
+  <div class="container">
+    <div class="section-tag">Checklist</div>
+    <h2 class="section-title">Required Documents for Empanelment</h2>
+    <p class="section-desc">The following documents are required from the hospital to initiate the empanelment process with any TPA or insurance company.</p>
+    <div class="divider"></div>
+    <div class="docs-grid">
+      <div class="doc-item"><div class="doc-num">1</div><div class="doc-text">Proprietor PAN Card</div></div>
+      <div class="doc-item"><div class="doc-num">2</div><div class="doc-text">Hospital Registration Certificate</div></div>
+      <div class="doc-item"><div class="doc-num">3</div><div class="doc-text">Hospital Profile</div></div>
+      <div class="doc-item"><div class="doc-num">4</div><div class="doc-text">Pollution Control Certificate</div></div>
+      <div class="doc-item"><div class="doc-num">5</div><div class="doc-text">Bio-Medical Waste Agreement</div></div>
+      <div class="doc-item"><div class="doc-num">6</div><div class="doc-text">Cancelled Cheque</div></div>
+      <div class="doc-item"><div class="doc-num">7</div><div class="doc-text">List of Doctors with Registration Certificates</div></div>
+      <div class="doc-item"><div class="doc-num">8</div><div class="doc-text">Pharmacy Details (In-house / Outsourcing)</div></div>
+      <div class="doc-item"><div class="doc-num">9</div><div class="doc-text">Hospital Tariff List</div></div>
+      <div class="doc-item"><div class="doc-num">10</div><div class="doc-text">Fire NOC Certificate</div></div>
+      <div class="doc-item"><div class="doc-num">11</div><div class="doc-text">Distribution of Beds — Department Wise</div></div>
+      <div class="doc-item"><div class="doc-num">12</div><div class="doc-text">Empanelment List</div></div>
+      <div class="doc-item"><div class="doc-num">13</div><div class="doc-text">Area of Hospital in Sq. Mtrs</div></div>
+      <div class="doc-item"><div class="doc-num">14</div><div class="doc-text">NABH / ISO Certificate (Any One)</div></div>
+      <div class="doc-item"><div class="doc-num">15</div><div class="doc-text">List of Equipment</div></div>
+      <div class="doc-item"><div class="doc-num">16</div><div class="doc-text">Hospital Photographs</div></div>
+      <div class="doc-item"><div class="doc-num">17</div><div class="doc-text">Rohini Registration</div></div>
+      <div class="doc-item"><div class="doc-num">18</div><div class="doc-text">Hospital Letter Head</div></div>
+      <div class="doc-item"><div class="doc-num">19</div><div class="doc-text">Hospital Round Stamp</div></div>
+      <div class="doc-item"><div class="doc-num">20</div><div class="doc-text">Doctor Registration Certificates</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p><strong>Rajesh Yadav</strong> — TPA & Insurance Empanelment Service Provider</p>
+  <p style="margin-top:0.5rem;">Sector-15, Panchkula, Haryana &nbsp;|&nbsp; <a href="tel:7814403910">7814403910</a> &nbsp;|&nbsp; <a href="mailto:rajesh.serviceprovider@gmail.com">rajesh.serviceprovider@gmail.com</a></p>
+  <p style="margin-top:1rem; font-size:0.75rem; opacity:0.5;">© 2025 Rajesh Yadav. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
